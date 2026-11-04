@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pdf-natural-paragraph-parser"
+version = "0.2.0"
+description = "Auditable ESG PDF parser with Docling structure recovery and natural-paragraph chunking"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "pypdf>=5,<7",
+]
+
+[project.optional-dependencies]
+docling = ["docling>=2,<3"]
+visualize = ["PyMuPDF>=1.24,<2", "Pillow>=10,<13"]
+all = [
+  "docling>=2,<3",
+  "PyMuPDF>=1.24,<2",
+  "Pillow>=10,<13",
+]
+test = ["pytest>=8,<10"]
+
+[project.scripts]
+pdf-natural-paragraphs = "natural_pdf_parser.__main__:main"
+
+[project.urls]
+Repository = "https://github.com/HKUBSAIRI/esg-qualitative-pdf-parser"
+Documentation = "https://github.com/HKUBSAIRI/esg-qualitative-pdf-parser#readme"
+Issues = "https://github.com/HKUBSAIRI/esg-qualitative-pdf-parser/issues"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["natural_pdf_parser*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
